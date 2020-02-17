@@ -1,0 +1,12 @@
+
+.container {
+  background-color: lightgrey;
+  padding:16px;
+  margin: 16px;
+  display: flex;
+}
+
+.details {
+  flex: 1;
+  display: block;
+}
