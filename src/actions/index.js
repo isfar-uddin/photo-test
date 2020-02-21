@@ -1,12 +1,11 @@
-import {IMAGE_UPLOAD, SAVE_IMAGE} from "./types";
-import Constants from './../constants'
+import {UPLOAD_IMAGE} from "./types";
 
-export const imageUpload = (e) => dispatch => {
-    console.log("From index:", e.target.files[0]);
-    const file = e.target.files[0];
-    getBase64(file).then(base64 => {
+export const uploadImage = (image) => dispatch => {
+    console.log("Actions:Index:uploadImage: ", image);
+    getBase64(image).then(base64 => {
+        console.log("Actions:Index:uploadImage base64: ", base64);
         dispatch({
-            type: IMAGE_UPLOAD,
+            type: UPLOAD_IMAGE,
             payload: base64
         })
     });
@@ -21,9 +20,26 @@ const getBase64 = (file) => {
     });
 };
 
-export const saveImage = (image) => dispatch => {
-    dispatch({
-        type: SAVE_IMAGE,
-        payload: image
-    })
+export const saveImage = (imageList)  => {
+    console.log("Actions:index:saveImage: ", imageList);
+    try {
+        const images = JSON.stringify(imageList);
+        console.log("Actions:index:saveImage: ", images);
+        localStorage.setItem('images', images);
+    } catch (err){
+
+    }
+};
+
+export const fetchImage = () => {
+    try {
+        const images = localStorage.getItem('images');
+        console.log("Actions:index:fetchImage: ", images);
+        if (images === null) {
+            return undefined;
+        }
+        return JSON.parse(images);
+    } catch (err) {
+        return undefined;
+    }
 };

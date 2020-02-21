@@ -7,14 +7,16 @@ import {
 } from "react-router-dom";
 import {Provider} from 'react-redux';
 import store from './store';
-import UploadScreen from './components/uploadScreen';
+import UploadPage from './components/uploadPage';
+import CatalogPage from './components/catalogPage';
 
 function App() {
     return (
       <Provider store={store}>
           <Router>
               <Switch>
-                  <Route exact path="/" component={UploadScreen} />
+                  <Route exact path="/upload" component={UploadPage} />
+                  <Route exact path="/catalog" component={CatalogPage} />
               </Switch>
           </Router>
       </Provider>

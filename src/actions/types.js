@@ -1,2 +1,1 @@
-export const IMAGE_UPLOAD = 'IMAGE_UPLOAD';
-export const SAVE_IMAGE = 'SAVE_IMAGE';
+export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
