@@ -1,13 +1,18 @@
-import {UPLOAD_IMAGE} from "./types";
+import {UPLOAD_IMAGE,DELETE_IMAGE} from "./types";
 
-export const uploadImage = (image) => dispatch => {
-    console.log("Actions:Index:uploadImage: ", image);
-    getBase64(image).then(base64 => {
-        console.log("Actions:Index:uploadImage base64: ", base64);
+export const uploadImage = (data) => dispatch => {
+
+    if(!data.image || !data.date || !data.place) {
+        alert("Please select image, date and place all of them");
+        return;
+    }
+    getBase64(data.image).then(base64 => {
+        data.image = base64;
         dispatch({
             type: UPLOAD_IMAGE,
-            payload: base64
-        })
+            payload: data
+        });
+        alert("Your file is being uploaded!");
     });
 };
 
@@ -21,10 +26,8 @@ const getBase64 = (file) => {
 };
 
 export const saveImage = (imageList)  => {
-    console.log("Actions:index:saveImage: ", imageList);
     try {
         const images = JSON.stringify(imageList);
-        console.log("Actions:index:saveImage: ", images);
         localStorage.setItem('images', images);
     } catch (err){
 
@@ -34,7 +37,6 @@ export const saveImage = (imageList)  => {
 export const fetchImage = () => {
     try {
         const images = localStorage.getItem('images');
-        console.log("Actions:index:fetchImage: ", images);
         if (images === null) {
             return undefined;
         }
@@ -42,4 +44,11 @@ export const fetchImage = () => {
     } catch (err) {
         return undefined;
     }
+};
+
+export const deleteImage = (index) => dispatch => {
+    dispatch({
+        type: DELETE_IMAGE,
+        payload: index
+    })
 };

@@ -20,7 +20,6 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-    console.log("Store: ", store.getState());
     saveImage({
         images: store.getState().imageList.images
     });

@@ -1,5 +1,13 @@
 export default {
-    API_KEY : 'cde74749b4f6d1e4b6acd1564231d0ce',
-    LAT: 23.8103,
-    LONG: 90.4125
+    API_KEY : 'a145ae2795d6bd2d2b030bb07bb8b8cf',
+    options : [
+        'Dhaka',
+        'Chittagong',
+        'Rajshahi',
+        'Khulna',
+        'Barishal',
+        'Sylhet',
+        'Mymenshingh',
+        'Rangpur'
+    ]
 }
