@@ -42,20 +42,26 @@ class UploadScreen extends Component {
         const options = Constants.options;
         const defaultOption = options[0];
         return(
-            <div>
-                <input type="file" onChange={this.onChangeImage}/>
-                <button onClick={()=> this.props.uploadImage({
+            <div className="container">
+                <div className="input-container">
+                    <input type="file" className="input-file" onChange={this.onChangeImage}/>
+                </div>
+                <div className="place-date-container">
+                    <Dropdown className="drop-down" options={options} onChange={this.onSelectPlace} value={this.state.selectedPlace} placeholder="Select photo place" />
+                    <DatePicker
+                        className="input-date"
+                        selected={this.state.selectedDate}
+                        onChange={this.onSelectDate}
+                    />
+                </div>
+
+                <button className="submit-btn" onClick={()=> this.props.uploadImage({
                     image:this.state.image,
                     place:this.state.selectedPlace,
                     date:this.state.selectedDate
                 })}>
                     Submit
                 </button>
-                <Dropdown options={options} onChange={this.onSelectPlace} value={this.state.selectedPlace} placeholder="Select photo place" />
-                <DatePicker
-                    selected={this.state.selectedDate}
-                    onChange={this.onSelectDate}
-                />
             </div>
         )
     }
