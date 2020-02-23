@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {imageUpload,deleteImage} from "./../actions";
 import './../App.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class CatalogPage extends Component {
 
     render(){
         if(this.props.data.length === 0) {
             return(
-                <div>No images in the local storage</div>
+                <div>No images uploaded yet</div>
             )
         }
         return(
@@ -16,11 +18,11 @@ class CatalogPage extends Component {
                 {this.props.data.length > 0 &&
                     this.props.data.map((item, index) => {
                         return(
-                            <div key={index}>
+                            <div key={index} className="image-container">
                                 <img src={item.image} width={200} height={200} />
-                                <div><h3>Place: <span>{item.place.value}</span></h3></div>
-                                <div><h3>Date: <span>{item.date}</span></h3></div>
-                                <button onClick={() => this.props.deleteImage(index)}>Delete</button>
+                                <FontAwesomeIcon class="close-btn" icon={faTrash} onClick={() => this.props.deleteImage(index)}/>
+                                <h3>Place: <span>{item.place.value}</span></h3>
+                                <h3>Date: <span>{item.date}</span></h3>
                             </div>
                         )
                     })

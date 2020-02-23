@@ -2,8 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import {Provider} from 'react-redux';
 import store from './store';
@@ -15,8 +14,8 @@ function App() {
       <Provider store={store}>
           <Router>
               <Switch>
-                  <Route exact path="/upload" component={UploadPage} />
-                  <Route exact path="/catalog" component={CatalogPage} />
+                  <Route path="/upload" component={UploadPage} />
+                  <Route path="/catalog" component={CatalogPage} />
               </Switch>
           </Router>
       </Provider>

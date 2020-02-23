@@ -1,12 +1,29 @@
-
-.container {
-  background-color: lightgrey;
-  padding:16px;
-  margin: 16px;
-  display: flex;
+.image-container {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+}
+h3 {
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+}
+h3 > span {
+  font-size: .8em;
+  font-weight: normal;
 }
 
-.details {
-  flex: 1;
+.close-btn {
+  display: none;
+  position: absolute;
+  float: right;
+  height: 20px;
+  width: 20px;
+  right: 50px;
+  top:10px;
+  color: white;
+}
+.image-container:hover .close-btn{
   display: block;
+  cursor: pointer;
+
 }

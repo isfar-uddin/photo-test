@@ -7,8 +7,6 @@ const persistedState = {
     imageList: fetchImage()
 };
 
-console.log("store:PersistedState: ", persistedState);
-
 const middlewire = [thunk];
 
 const store = createStore(
