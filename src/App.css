@@ -18,6 +18,20 @@
   cursor: pointer;
 }
 
+.input-text {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: text;
+  width: 372px;
+}
+.input-text:focus, .input-date:focus, .submit-btn:focus {
+  border-radius: 10px;
+  box-shadow: 0 0 3px 2px #88b8ff;
+  outline: none;
+}
+
 .place-date-container {
   display: flex;
 }
@@ -25,7 +39,7 @@
   padding: 10px;
 }
 .Dropdown-control {
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
 }
 .react-datepicker__input-container {
@@ -56,6 +70,11 @@
   border-radius: 10px;
 }
 
+.submit-btn:hover{
+  background-color: cadetblue;
+}
+
+
 .image-container {
   display: inline-block;
   padding: 10px;
@@ -83,4 +102,11 @@ h3 > span {
 .image-container:hover .close-btn{
   display: block;
   cursor: pointer;
+}
+
+@media screen and (max-width: 439px){
+  .input-text {
+    width: 300px;
+    padding: 8px;
+  }
 }

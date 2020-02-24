@@ -14,26 +14,27 @@ class UploadScreen extends Component {
         this.state = {
             image: null,
             selectedPlace: null,
-            selectedDate: new Date()
+            selectedDate: new Date(),
+            title: null
         }
     }
 
-    onChangeImage = (e) => {
-        this.setState({
-            image: e.target.files[0]
-        })
-    };
+    onChange = (val, name) => {
 
-    onSelectPlace = (option) => {
-        this.setState({
-            selectedPlace: option
-        })
-    };
+        if(name === 'image') {
+            this.setState({
+                [name]:val.target.files[0]
+            })
+        }else if(name === 'title'){
+            this.setState({
+                [name]:val.target.value
+            })
+        }else {
+            this.setState({
+                [name]:val
+            })
+        }
 
-    onSelectDate = (date) => {
-        this.setState({
-            selectedDate: date
-        });
     };
 
 
@@ -44,19 +45,23 @@ class UploadScreen extends Component {
         return(
             <div className="container">
                 <div className="input-container">
-                    <input type="file" className="input-file" onChange={this.onChangeImage}/>
+                    <input type="file" className="input-file" onChange={(val) => this.onChange(val,'image')}/>
                 </div>
+
+                <input type="text" className="input-text" placeholder="Add your title" onChange={(val)=>this.onChange(val,'title')}/>
+
                 <div className="place-date-container">
-                    <Dropdown className="drop-down" options={options} onChange={this.onSelectPlace} value={this.state.selectedPlace} placeholder="Select photo place" />
+                    <Dropdown className="drop-down" options={options} onChange={(val)=>this.onChange(val,'selectedPlace')} value={this.state.selectedPlace} placeholder="Select photo place" />
                     <DatePicker
                         className="input-date"
                         selected={this.state.selectedDate}
-                        onChange={this.onSelectDate}
+                        onChange={(val) => this.onChange(val,'selectedDate')}
                     />
                 </div>
 
                 <button className="submit-btn" onClick={()=> this.props.uploadImage({
                     image:this.state.image,
+                    title:this.state.title,
                     place:this.state.selectedPlace,
                     date:this.state.selectedDate
                 })}>

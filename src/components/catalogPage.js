@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {imageUpload,deleteImage} from "./../actions";
 import './../App.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 class CatalogPage extends Component {
 
@@ -17,10 +17,12 @@ class CatalogPage extends Component {
             <div>
                 {this.props.data.length > 0 &&
                     this.props.data.map((item, index) => {
+                    console.log("Catalog page:", item);
                         return(
                             <div key={index} className="image-container">
                                 <img src={item.image} width={200} height={200} />
-                                <FontAwesomeIcon class="close-btn" icon={faTrash} onClick={() => this.props.deleteImage(index)}/>
+                                <FontAwesomeIcon className="close-btn" icon={faTimes} onClick={() => this.props.deleteImage(index)}/>
+                                <h3>Title: <span>{item.title}</span></h3>
                                 <h3>Place: <span>{item.place.value}</span></h3>
                                 <h3>Date: <span>{item.date}</span></h3>
                             </div>
