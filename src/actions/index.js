@@ -3,7 +3,7 @@ import {UPLOAD_IMAGE,DELETE_IMAGE} from "./types";
 export const uploadImage = (data) => dispatch => {
 
     if(!data.image || !data.date || !data.place || !data.title) {
-        alert("Please select image, date and place all of them");
+        alert("Please select image, date, title and place all of them");
         return;
     }
     getBase64(data.image).then(base64 => {

@@ -13,8 +13,10 @@ export default (state = initialState, action) => {
                 images:[...state.images,action.payload]
             };
         case DELETE_IMAGE:
+            console.log("imageReducer: ", action);
             let newImageList = [...state.images];
-            newImageList.splice(action.index,1);
+            console.log("imageReducer: imageList:", newImageList);
+            newImageList.splice(action.payload,1);
             return {
                 images: newImageList
             };

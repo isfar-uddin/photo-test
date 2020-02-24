@@ -6,6 +6,10 @@
   padding: 10px;
   height: 60vh;
 }
+.no-image {
+  font-size: 20px;
+  font-weight: bold;
+}
 .input-container {
   display: flex;
   padding: 10px;

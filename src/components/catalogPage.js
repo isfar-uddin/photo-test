@@ -10,14 +10,13 @@ class CatalogPage extends Component {
     render(){
         if(this.props.data.length === 0) {
             return(
-                <div>No images uploaded yet</div>
+                <div className="container no-image">No images uploaded yet</div>
             )
         }
         return(
             <div>
                 {this.props.data.length > 0 &&
                     this.props.data.map((item, index) => {
-                    console.log("Catalog page:", item);
                         return(
                             <div key={index} className="image-container">
                                 <img src={item.image} width={200} height={200} />
